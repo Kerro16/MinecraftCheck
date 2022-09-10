@@ -7,12 +7,22 @@ import java.net.UnknownHostException;
 
 public class Server {
 
+    //Tunnel IP
     String External = "dance-others.craft.playit.gg:12136";
+    //Local IP
     String Local = "192.168.0.14:25565";
     String result = "Offline";
 
-    public String isOnline(){
-        String[] addr = External.split(":");
+    public String isOnline(String option){
+
+         String [] addr = new String[2];
+         if(option == "1"){
+             addr[0] = Local;
+         }
+         else{
+             addr[0] = External;
+         }
+         addr = External.split(":");
         try{
             Socket s = new Socket();
             s.connect(new InetSocketAddress(addr[0], Integer.parseInt(addr[1])));
@@ -23,6 +33,5 @@ public class Server {
         catch (IOException e){
             return result;
         }
-
     }
 }
