@@ -18,11 +18,13 @@ public class Server {
          String [] addr = new String[2];
          if(option == "1"){
              addr[0] = Local;
+             addr = Local.split(":");
          }
          else{
              addr[0] = External;
+             addr = External.split(":");
          }
-         addr = External.split(":");
+
         try{
             Socket s = new Socket();
             s.connect(new InetSocketAddress(addr[0], Integer.parseInt(addr[1])));
